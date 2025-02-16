@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "transit-pylark"
+version = "0.1.0"
+description = "lark processor for transit format"
+authors = ["orpheus <orpheus@computerdream.club>"]
+readme = "README.md"
+packages = [{include="transit_pylark"}]
+
+[tool.poetry.scripts]
+transit-pylark = "transit_pylark:main"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+lark = "^1.2.2"
+rich = "^13.9.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
