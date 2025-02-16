@@ -18,7 +18,7 @@ pub fn hello() {
     );
 
     let jvm = JvmBuilder::new()
-        .with_base_path("/tmp/myapp")
+        .with_base_path("/tmp/datomic-crosslang-tools")
         .classpath_entry(entry)
         .build()
         .expect("got the jvm");
