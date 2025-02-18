@@ -5,7 +5,7 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git pkgs.black (pkgs.poetry.override { python3 = pkgs.python311; }) ];
+  packages = [ pkgs.git pkgs.black (pkgs.poetry.override { python3 = pkgs.python311; }) pkgs.python3Packages.python-lsp-server ];
 
   # https://devenv.sh/languages/
   languages.python.enable = true;
