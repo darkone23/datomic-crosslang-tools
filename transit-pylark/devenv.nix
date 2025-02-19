@@ -5,7 +5,13 @@
   env.GREET = "devenv";
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git pkgs.black (pkgs.poetry.override { python3 = pkgs.python311; }) pkgs.python3Packages.python-lsp-server ];
+  packages = [
+    pkgs.git
+    pkgs.black
+    pkgs.pipx
+    (pkgs.poetry.override { python3 = pkgs.python311; })
+    pkgs.python3Packages.python-lsp-server
+  ];
 
   # https://devenv.sh/languages/
   languages.python.enable = true;
@@ -27,11 +33,17 @@
     git --version
   '';
 
+  scripts.run-test-suite.exec = ''
+    $HOME/.local/bin/poe test
+  '';
+
   # https://devenv.sh/tasks/
-  # tasks = {
+  tasks = {
+    "transit:setup".exec = "pipx install poethepoet && ${pkgs.poetry}/bin/poetry install";
   #   "myproj:setup".exec = "mytool build";
   #   "devenv:enterShell".after = [ "myproj:setup" ];
-  # };
+    "devenv:enterShell".after = [ "transit:setup" ];
+  };
 
   # https://devenv.sh/tests/
   enterTest = ''

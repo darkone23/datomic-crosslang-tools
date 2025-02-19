@@ -4,10 +4,7 @@ version = "0.1.0"
 description = "lark processor for transit format"
 authors = ["orpheus <orpheus@computerdream.club>"]
 readme = "README.md"
-packages = [{include="transit_pylark"}]
-
-[tool.poetry.scripts]
-transit-pylark = "transit_pylark:main"
+packages = [{include="transit_pylark", from="src"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -16,6 +13,12 @@ rich = "^13.9.4"
 immutabledict = "^4.2.1"
 frozenlist = "^1.5.0"
 
+[tool.poe.tasks]
+test.cmd = "nose2 -s tests"
+# test.envfile = "${POE_GIT_DIR}/.test-envfile"
+
+[tool.poetry.group.test.dependencies]
+nose2 = "^0.15.1"
 
 [build-system]
 requires = ["poetry-core"]

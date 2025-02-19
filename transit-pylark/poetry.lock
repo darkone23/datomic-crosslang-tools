@@ -165,6 +165,21 @@ files = [
 ]
 
 [[package]]
+name = "nose2"
+version = "0.15.1"
+description = "unittest with plugins"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "nose2-0.15.1-py3-none-any.whl", hash = "sha256:564450c0c4f1602dfe171902ceb4726cc56658af7a620ae1826f1ffc86b09a86"},
+    {file = "nose2-0.15.1.tar.gz", hash = "sha256:36770f519df5becd3cbfe0bee4abbfbf9b9f6b4eb4e03361d282b7efcfc4f0df"},
+]
+
+[package.extras]
+coverage-plugin = ["coverage"]
+dev = ["sphinx", "sphinx-issues", "sphinx-rtd-theme"]
+
+[[package]]
 name = "pygments"
 version = "2.19.1"
 description = "Pygments is a syntax highlighting package written in Python."
@@ -199,4 +214,4 @@ jupyter = ["ipywidgets (>=7.5.1,<9)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "acee6150af3871ace04d51f195d350ffb5602c2c5d130929a229d4bb59ea8b46"
+content-hash = "d98a47acffdc154db3a0ba7d07f6d13b310787b1b7c3057ecbe81c95e4a24ca9"
