@@ -17,14 +17,14 @@ class TransitExampleRunner:
         )  # """["~:a","~:ab","~:abc","~:abcd","~:abcde","~:a1","~:b2","~:c3","~:a_b"]"""
         self.reader = reader
 
-    def run_parse(self):
+    def run_parse(self, cache: bool):
 
         payload_size = len(self.transit_txt)
         # print(f"Parsing {self.name} json document of len", payload_size)
 
         start = time.monotonic()
 
-        tree = self.reader.read(self.transit_txt)
+        tree = self.reader.read(self.transit_txt, enable_cache=cache)
         # print(tree.pretty())
 
         parse_time = time.monotonic() - start
@@ -80,15 +80,10 @@ class TransitTestSuite(unittest.TestCase):
                 # "./test_data/simple/nil.verbose.json"
             )
 
-            results = []
-            for source in [
-                transit_cache_example,
-                transit_verbose_example,
-            ]:
-                # print("Running example:", source)
-                tool = TransitExampleRunner(reader, source)
-                parse_results = tool.run_parse()
-                results.append(parse_results)
+            results = [
+                TransitExampleRunner(reader, transit_cache_example).run_parse(cache=True),
+                TransitExampleRunner(reader, transit_verbose_example).run_parse(cache=False),
+            ]
 
             tree_0 = results[0]["tree"]
             tree_1 = results[1]["tree"]
