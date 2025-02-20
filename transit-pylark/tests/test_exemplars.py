@@ -36,8 +36,8 @@ cmap_pathological = frozenlist([
 ])
 
 dates_interesting = None
-doubles_interesting = None
-doubles_small = None
+doubles_interesting = frozenlist([-3.14159, 3.14159, 4.0E11, 2.998E8, 6.626E-34])
+doubles_small = [-5.0, -4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0]
 false = None
 ints = None
 ints_interesting = None
@@ -105,8 +105,8 @@ exemplar_files = [
     ExemplarSpec("cmap_null_key", cmap_null_key),
     ExemplarSpec("cmap_pathological", cmap_pathological),
     # ExemplarSpec("dates_interesting", dates_interesting),
-    # ExemplarSpec("doubles_interesting", doubles_interesting),
-    # ExemplarSpec("doubles_small", doubles_small),
+    ExemplarSpec("doubles_interesting", doubles_interesting),
+    ExemplarSpec("doubles_small", doubles_small),
     # ExemplarSpec("false", false),
     # ExemplarSpec("ints", ints),
     # ExemplarSpec("ints_interesting", ints_interesting),

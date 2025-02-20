@@ -1,6 +1,7 @@
 
 from pathlib import Path
 from rich.pretty import pprint
+import json
 import time
 from transit_pylark.reader import TransitReader
 
@@ -33,14 +34,17 @@ class TransitExampleRunner:
         # result = transformer.transform(tree)
         # print(result.pretty())
 
-        # json.loads(transit_txt)
+        json_start = time.monotonic()
+        json.loads(self.transit_txt)
+        native_json_parse_time = time.monotonic() - json_start
 
         # print(f"Total {self.name} took n seconds:", time.monotonic() - start)
 
         return dict(
             name=self.name,
             size=payload_size,
-            parse_time=parse_time,
+            parse_time=parse_time * 1000,
+            native_parse_time=native_json_parse_time * 1000,
             tree=tree,
         )
 
