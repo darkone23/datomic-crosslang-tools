@@ -1,1 +1,0 @@
-’£~#'´~rhttp://example.com
