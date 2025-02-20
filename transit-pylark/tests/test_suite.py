@@ -2,82 +2,10 @@
 from pathlib import Path
 from rich.pretty import pprint
 import time
-from transit_pylark.core import (
-    TransitReader
-)
-
+from transit_pylark.reader import TransitReader
 
 import unittest
 
-exemplar_files = [
-    "./test_data/simple/cmap_null_key.verbose.json",
-    "./test_data/simple/cmap_pathological.verbose.json",
-    "./test_data/simple/dates_interesting.verbose.json",
-    "./test_data/simple/doubles_interesting.verbose.json",
-    "./test_data/simple/doubles_small.verbose.json",
-    "./test_data/simple/false.verbose.json",
-    "./test_data/simple/ints.verbose.json",
-    "./test_data/simple/ints_interesting.verbose.json",
-    "./test_data/simple/ints_interesting_neg.verbose.json",
-    "./test_data/simple/keywords.verbose.json",
-    "./test_data/simple/list_empty.verbose.json",
-    "./test_data/simple/list_mixed.verbose.json",
-    "./test_data/simple/list_nested.verbose.json",
-    "./test_data/simple/list_simple.verbose.json",
-    "./test_data/simple/map_10_items.verbose.json",
-    "./test_data/simple/map_10_nested.verbose.json",
-    "./test_data/simple/map_1935_nested.verbose.json",
-    "./test_data/simple/map_1936_nested.verbose.json",
-    "./test_data/simple/map_1937_nested.verbose.json",
-    "./test_data/simple/map_mixed.verbose.json",
-    "./test_data/simple/map_nested.verbose.json",
-    "./test_data/simple/map_numeric_keys.verbose.json",
-    "./test_data/simple/map_simple.verbose.json",
-    "./test_data/simple/map_string_keys.verbose.json",
-    "./test_data/simple/map_unrecognized_vals.verbose.json",
-    "./test_data/simple/map_vector_keys.verbose.json",
-    "./test_data/simple/maps_four_char_keyword_keys.verbose.json",
-    "./test_data/simple/maps_four_char_string_keys.verbose.json",
-    "./test_data/simple/maps_four_char_sym_keys.verbose.json",
-    "./test_data/simple/maps_three_char_keyword_keys.verbose.json",
-    "./test_data/simple/maps_three_char_string_keys.verbose.json",
-    "./test_data/simple/maps_three_char_sym_keys.verbose.json",
-    "./test_data/simple/maps_two_char_keyword_keys.verbose.json",
-    "./test_data/simple/maps_two_char_string_keys.verbose.json",
-    "./test_data/simple/maps_two_char_sym_keys.verbose.json",
-    "./test_data/simple/maps_unrecognized_keys.verbose.json",
-    "./test_data/simple/nil.verbose.json",
-    "./test_data/simple/one.verbose.json",
-    "./test_data/simple/one_date.verbose.json",
-    "./test_data/simple/one_keyword.verbose.json",
-    "./test_data/simple/one_string.verbose.json",
-    "./test_data/simple/one_symbol.verbose.json",
-    "./test_data/simple/one_uri.verbose.json",
-    "./test_data/simple/one_uuid.verbose.json",
-    "./test_data/simple/set_empty.verbose.json",
-    "./test_data/simple/set_mixed.verbose.json",
-    "./test_data/simple/set_nested.verbose.json",
-    "./test_data/simple/set_simple.verbose.json",
-    "./test_data/simple/small_ints.verbose.json",
-    "./test_data/simple/small_strings.verbose.json",
-    "./test_data/simple/strings_hash.verbose.json",
-    "./test_data/simple/strings_hat.verbose.json",
-    "./test_data/simple/strings_tilde.verbose.json",
-    "./test_data/simple/symbols.verbose.json",
-    "./test_data/simple/true.verbose.json",
-    "./test_data/simple/uris.verbose.json",
-    "./test_data/simple/uuids.verbose.json",
-    "./test_data/simple/vector_1935_keywords_repeated_twice.verbose.json",
-    "./test_data/simple/vector_1936_keywords_repeated_twice.verbose.json",
-    "./test_data/simple/vector_1937_keywords_repeated_twice.verbose.json",
-    "./test_data/simple/vector_empty.verbose.json",
-    "./test_data/simple/vector_mixed.verbose.json",
-    "./test_data/simple/vector_nested.verbose.json",
-    "./test_data/simple/vector_simple.verbose.json",
-    "./test_data/simple/vector_special_numbers.verbose.json",
-    "./test_data/simple/vector_unrecognized_vals.verbose.json",
-    "./test_data/simple/zero.verbose.json",
-]
 
 class TransitExampleRunner:
 

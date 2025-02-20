@@ -239,7 +239,13 @@ class TransitJsonTransformer(Transformer):
     def __emit_dict(self, xs):
         if len(xs) and type(next(iter(xs.keys())).k) is transit_tag:
             return self.__transit_tagged_dict(xs)
-        return frozendict(xs)
+        obj = {}
+        for k, v in xs.items():
+            if type(k) is mapkey:
+                obj[k.k] = v
+            else:
+                obj[k] = v
+        return frozendict(obj)
 
     def dict(self, args):
         xs = self.__dict(args)

@@ -8,7 +8,7 @@ class frozendict(immutabledict):
     def __repr__(self):
         frozenstr = super().__repr__()
         xs_part = frozenstr[11:]
-        return f"frozendict({xs_part})"
+        return f"frozendict({xs_part}"
 
 class frozenlist(FrozenList):
 
